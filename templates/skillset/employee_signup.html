@@ -1,0 +1,30 @@
+{% extends 'skillset/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+  <h1>Candidate Sign Up</h1>
+</div>
+{% if registered %}
+  <h1>Thank You for registrating</h1>
+{% else %}
+  <h1>Register Here</h1>
+  <h3>Fill out the form</h3>
+
+  <form class="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-6 md-0">
+        {{ user_form|crispy }}
+        {{ employee_form|crispy }}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+    <!-- name="" value="Sign Up"> -->
+  </form>
+{% endif %}
+</div>
+
+{% endblock %}
